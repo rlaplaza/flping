@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH -J neutral
+#SBATCH -o /home/laplaza/Projects/flp/666_fehafepa/3/neutral.out
+#SBATCH --mem=24000
+#SBATCH --nodes=1
+#SBATCH -n 24
+module load gaussian/g16/C.01
+cd $SLURM_TMPDIR
+echo $SLURM_TMPDIR
+cp $SLURM_SUBMIT_DIR/neutral.com $SLURM_TMPDIR
+g16 neutral.com > neutral.log
+cp neutral.log $SLURM_SUBMIT_DIR
+exit 
